@@ -55,7 +55,9 @@ def test_strip_key(value, prefix, expected):
     assert strip_key(value, prefix) == expected
 
 
-@pytest.mark.parametrize(("raw", "expected"), [("5", 5.0), ("-2", 0.0), ("soon", None), (None, None)])
+@pytest.mark.parametrize(
+    ("raw", "expected"), [("5", 5.0), ("-2", 0.0), ("soon", None), (None, None)]
+)
 def test_parse_retry_after(raw, expected):
     assert parse_retry_after(raw) == expected
 

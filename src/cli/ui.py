@@ -34,7 +34,9 @@ def format_table(
         max(len(header), *(len(line[index]) for line in cells))
         for index, (_, header) in enumerate(columns)
     ]
-    numeric = [all(_is_number(row.get(key)) or row.get(key) is None for row in rows) for key, _ in columns]
+    numeric = [
+        all(_is_number(row.get(key)) or row.get(key) is None for row in rows) for key, _ in columns
+    ]
 
     def render(values: list[str], align_numbers: bool = True) -> str:
         parts = [

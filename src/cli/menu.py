@@ -90,7 +90,9 @@ def parse_subject_payloads(payloads: list[dict[str, Any]], subject: str) -> list
     return list(records.values())
 
 
-def parse_search_docs(payload: dict[str, Any], preferred_isbn: str | None = None) -> list[WorkRecord]:
+def parse_search_docs(
+    payload: dict[str, Any], preferred_isbn: str | None = None
+) -> list[WorkRecord]:
     records: dict[str, WorkRecord] = {}
     for doc in payload.get("docs") or []:
         try:
@@ -260,7 +262,9 @@ class CLIApp:
     # ================================================================ option 1
     def ingest_by_subject(self) -> None:
         self.section("[1] Ingest Works by Subject")
-        subject = self.ask_validated("  Subject (e.g. 'science fiction', 'history'): ", clean_subject)
+        subject = self.ask_validated(
+            "  Subject (e.g. 'science fiction', 'history'): ", clean_subject
+        )
         if subject is None:
             return
         pages = self.ask_int(
@@ -611,7 +615,9 @@ class CLIApp:
         self.section("[6] Run Quality Checks & Test Suite Diagnostic")
         results: list[CheckResult] = []
         for name, command in self.quality_commands():
-            display = " ".join(Path(command[0]).stem if i == 0 else p for i, p in enumerate(command))
+            display = " ".join(
+                Path(command[0]).stem if i == 0 else p for i, p in enumerate(command)
+            )
             print(f"\n  >> {name}: {display}")
             start = time.perf_counter()
             passed = self.stream_command(command)

@@ -136,7 +136,11 @@ def test_parse_isbn_returns_isbn13():
 
 @pytest.mark.parametrize(
     ("raw", "message"),
-    [("12345", "10 or 13 digits"), ("0140328727", "ISBN-10 checksum"), ("9780140328722", "ISBN-13")],
+    [
+        ("12345", "10 or 13 digits"),
+        ("0140328727", "ISBN-10 checksum"),
+        ("9780140328722", "ISBN-13"),
+    ],
 )
 def test_parse_isbn_errors(raw, message):
     with pytest.raises(DataValidationError, match=message):
@@ -167,7 +171,11 @@ def test_parse_year(raw, expected):
 
 
 def test_split_values_deduplicates_and_cleans():
-    assert split_values("Fantasy; Adventure | fantasy ,Fantasy") == ["Fantasy", "Adventure", "fantasy"]
+    assert split_values("Fantasy; Adventure | fantasy ,Fantasy") == [
+        "Fantasy",
+        "Adventure",
+        "fantasy",
+    ]
     assert split_values(["a", " a ", "", "b"]) == ["a", "b"]
     assert split_values(None) == []
 
