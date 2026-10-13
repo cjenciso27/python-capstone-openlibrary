@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments & secrets
+.venv/
+.env
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+data/*.db
+data/*.db-journal
+data/outputs/*
+!data/outputs/.gitkeep

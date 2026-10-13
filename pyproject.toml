@@ -1,0 +1,49 @@
+[project]
+name = "library-project"
+version = "1.0.0"
+description = "Open Library Intelligence & Catalog Automation System - CLI automation tool for the Open Library REST API."
+readme = "README.md"
+authors = [
+    { name = "Carlos Guevara Enciso", email = "carlos.sit27@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.6",
+    "pydantic-settings>=2.15.0",
+    "python-dotenv>=1.2.4",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "pytest-mock>=3.16.0",
+    "ruff>=0.17.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "N", "C4", "RUF"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+python_files = ["*_test.py", "test_*.py"]
+asyncio_mode = "auto"
+addopts = "-ra"
